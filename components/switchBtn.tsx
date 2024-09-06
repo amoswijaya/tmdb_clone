@@ -17,6 +17,7 @@ const ToggleSwitch = ({ value, setValue, list }: Props) => {
               ? "bg-[#032541] rounded-full text-[#2CD9AD] font-extrabold"
               : "font-bold"
           } transition-colors duration-300 ease-in-out transform items-center `}
+          key={item}
         >
           {item}
         </span>
