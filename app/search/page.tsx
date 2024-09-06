@@ -1,11 +1,11 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { FaSearch } from "react-icons/fa";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { fetchSearchParams } from "@/lib/slices/searchParamsSlice";
 import CardSearch from "@/components/cardSearch";
-const Search = () => {
+const SearchResults = () => {
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
   const { loading, error, searchResults } = useAppSelector(
@@ -82,6 +82,14 @@ const Search = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const Search: React.FC = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchResults />
+    </Suspense>
   );
 };
 
