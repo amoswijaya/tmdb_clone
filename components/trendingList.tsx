@@ -7,10 +7,11 @@ import {
 } from "../lib/slices/movieSlice";
 import CardMovie from "./cardMovie";
 import ToggleSwitch from "./switchBtn";
+import CardSkeleton from "./cardSkeleton";
 
 const TrendingList: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { trendingMovies, loading, error } = useAppSelector(
+  const { trendingMovies, loadingTrending, error } = useAppSelector(
     (state) => state.movies,
   );
   const [trending, setTrending] = useState("Day");
@@ -36,20 +37,19 @@ const TrendingList: React.FC = () => {
 
       <div className='w-full  bg-wave-bg  bg-cover bg-top'>
         <div className='flex flex-row flex-nowrap overflow-y-auto  gap-5 pl-7 pt-5'>
-          {loading && <p>Loading...</p>}
-
+          {trendingMovies.length === 0 || loadingTrending
+            ? [...Array(9)].map((i) => <CardSkeleton key={i} />)
+            : trendingMovies.map((movie: any) => (
+                <CardMovie
+                  key={movie.id}
+                  title={movie.title}
+                  date={movie.release_date}
+                  poster_path={movie.poster_path}
+                  id={movie.id}
+                  vote_average={movie.vote_average}
+                />
+              ))}
           {error && <p>Error: {error}</p>}
-
-          {trendingMovies.map((movie) => (
-            <CardMovie
-              key={movie.id}
-              title={movie.title}
-              date={movie.release_date}
-              poster_path={movie.poster_path}
-              id={movie.id}
-              vote_average={movie.vote_average}
-            />
-          ))}
         </div>
       </div>
     </section>

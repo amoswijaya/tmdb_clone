@@ -9,9 +9,10 @@ import {
   fetchTopRatedMovies,
 } from "@/lib/slices/movieSlice";
 import CardMovie from "./cardMovie";
+import CardSkeleton from "./cardSkeleton";
 const PopularList: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { popularMovies, loading, error } = useAppSelector(
+  const { popularMovies, loadingPopular, error } = useAppSelector(
     (state) => state.movies,
   );
   const [popular, setPopular] = useState("Now Playing");
@@ -36,25 +37,22 @@ const PopularList: React.FC = () => {
           setValue={setPopular}
         />
       </div>
-      {loading && <p>Loading...</p>}
 
-      {error && <p>Error: {error}</p>}
       <div className='w-full   '>
         <div className='flex flex-row flex-nowrap overflow-y-auto  gap-5 pl-7 pt-5'>
-          {loading && <p>Loading...</p>}
-
+          {popularMovies.length === 0 || loadingPopular
+            ? [...Array(9)].map(() => <CardSkeleton />)
+            : popularMovies.map((movie) => (
+                <CardMovie
+                  key={movie.id}
+                  title={movie.title}
+                  date={movie.release_date}
+                  poster_path={movie.poster_path}
+                  id={movie.id}
+                  vote_average={movie.vote_average}
+                />
+              ))}
           {error && <p>Error: {error}</p>}
-
-          {popularMovies.map((movie) => (
-            <CardMovie
-              key={movie.id}
-              title={movie.title}
-              date={movie.release_date}
-              poster_path={movie.poster_path}
-              id={movie.id}
-              vote_average={movie.vote_average}
-            />
-          ))}
         </div>
       </div>
     </section>

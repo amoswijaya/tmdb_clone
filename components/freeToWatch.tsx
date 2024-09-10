@@ -4,10 +4,11 @@ import { useAppSelector, useAppDispatch } from "../lib/hooks";
 import { fetchDiscoverMovies, fetchDiscoverTv } from "../lib/slices/movieSlice";
 import CardMovie from "./cardMovie";
 import ToggleSwitch from "./switchBtn";
+import CardSkeleton from "./cardSkeleton";
 
 const FreeToWatch: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { freeToWatch, loading, error } = useAppSelector(
+  const { freeToWatch, loadingFreeToWatch, error } = useAppSelector(
     (state) => state.movies,
   );
   const [freeToWatchs, setFreeToWatch] = useState("Movies");
@@ -28,25 +29,22 @@ const FreeToWatch: React.FC = () => {
           setValue={setFreeToWatch}
         />
       </div>
-      {loading && <p>Loading...</p>}
 
-      {error && <p>Error: {error}</p>}
       <div className='w-full   '>
         <div className='flex flex-row flex-nowrap overflow-y-auto  gap-5 pl-7 pt-5'>
-          {loading && <p>Loading...</p>}
-
+          {loadingFreeToWatch || freeToWatch.length === 0
+            ? [...Array(9)].map(() => <CardSkeleton />)
+            : freeToWatch.map((movie) => (
+                <CardMovie
+                  key={movie.id}
+                  title={movie.title}
+                  date={movie.release_date}
+                  poster_path={movie.poster_path}
+                  id={movie.id}
+                  vote_average={movie.vote_average}
+                />
+              ))}
           {error && <p>Error: {error}</p>}
-
-          {freeToWatch.map((movie) => (
-            <CardMovie
-              key={movie.id}
-              title={movie.title}
-              date={movie.release_date}
-              poster_path={movie.poster_path}
-              id={movie.id}
-              vote_average={movie.vote_average}
-            />
-          ))}
         </div>
       </div>
     </section>
