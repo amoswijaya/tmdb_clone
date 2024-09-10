@@ -11,7 +11,7 @@ const CardMovie = ({ title, date, poster_path, id, vote_average }: Movie) => {
   const router = useRouter();
   return (
     <div
-      onClick={() => router.push(`/Movie/${id}`)}
+      onClick={() => router.push(`/movie/${id}`)}
       className='flex flex-col transition-colors duration-300 ease-in-out cursor-pointer'
     >
       <img
