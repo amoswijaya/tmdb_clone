@@ -41,7 +41,7 @@ const PopularList: React.FC = () => {
       <div className='w-full   '>
         <div className='flex flex-row flex-nowrap overflow-y-auto  gap-5 pl-7 pt-5'>
           {popularMovies.length === 0 || loadingPopular
-            ? [...Array(9)].map(() => <CardSkeleton />)
+            ? [...Array(9)].map((_, i) => <CardSkeleton key={i} />)
             : popularMovies.map((movie) => (
                 <CardMovie
                   key={movie.id}

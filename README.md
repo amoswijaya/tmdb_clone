@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TMDB MOVIE CLONE
+
+I create Tmdb clone using next Js
+
+## Prerequisites
+
+Before you start, ensure you have the following tools installed:
+
+- [Node.js](https://nodejs.org/) (version 14.x or later recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) for package management
+- [Git](https://git-scm.com/) (optional, if cloning from a repository)
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/amoswijaya/tmdb_clone.git
+cd tmdb_clone
+```
+
+### 2. Install Dependencies
+
+Using npm:
+
+```bash
+npm install
+```
+
+Using yarn:
+
+```bash
+yarn intall
+```
+
+### 3. Set Up Environment Variables
+
+To run the project locally, you'll need `API KEY` from tmdb. you can get `API KEY` in https://www.themoviedb.org/.
+
+```bash
+./.env
+NEXT_PUBLIC_TMDB_API_KEY==''
+```
+
+### 4. Running the Development Server
+
+Using npm:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Using yarn:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## link deploy
 
-## Learn More
+https://tmdb-clone-rho-six.vercel.app/
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![App Screenshot](https://i.imgur.com/Hhx4GfU.png))

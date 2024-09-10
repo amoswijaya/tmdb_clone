@@ -38,7 +38,7 @@ const TrendingList: React.FC = () => {
       <div className='w-full  bg-wave-bg  bg-cover bg-top'>
         <div className='flex flex-row flex-nowrap overflow-y-auto  gap-5 pl-7 pt-5'>
           {trendingMovies.length === 0 || loadingTrending
-            ? [...Array(9)].map((i) => <CardSkeleton key={i} />)
+            ? [...Array(9)].map((_, i) => <CardSkeleton key={i} />)
             : trendingMovies.map((movie: any) => (
                 <CardMovie
                   key={movie.id}

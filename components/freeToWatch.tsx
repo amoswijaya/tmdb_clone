@@ -33,7 +33,7 @@ const FreeToWatch: React.FC = () => {
       <div className='w-full   '>
         <div className='flex flex-row flex-nowrap overflow-y-auto  gap-5 pl-7 pt-5'>
           {loadingFreeToWatch || freeToWatch.length === 0
-            ? [...Array(9)].map(() => <CardSkeleton />)
+            ? [...Array(9)].map((_, i) => <CardSkeleton key={i} />)
             : freeToWatch.map((movie) => (
                 <CardMovie
                   key={movie.id}
